@@ -1,0 +1,14 @@
+{
+  "name": "serah",
+  "version": "1.0.0",
+  "description": "",
+  "main": "file.js",
+  "scripts": {
+    "start": "node login.js"
+  },
+  "author": "serina george",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
