@@ -1,0 +1,28 @@
+[
+  {
+    "userName": "Arun",
+    "userId": 1,
+    "password": "arun@123",
+    "address": {
+      "addressLineOne": "Sreenivas",
+      "addressLineTwo": "A.N.Puram",
+      "postalCode": "688011",
+      "city": "Alappuzha",
+      "state": "Kerala",
+      "country": "IN"
+    }
+  },
+  {
+    "userName": "Serina",
+    "userId": 2,
+    "password": "serina@123",
+    "address": {
+      "addressLineOne": "Xyz",
+      "addressLineTwo": "Qwe",
+      "postalCode": "123123",
+      "city": "YUI",
+      "state": "POIOP",
+      "country": "NZ"
+    }
+  }
+]
