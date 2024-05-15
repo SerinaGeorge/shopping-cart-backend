@@ -1,15 +1,12 @@
 const express = require("express");
 
 var router = express.Router();
-
-const users = [
-  { username: "user1", password: "she" },
-  { usernmae: "user2", password: "password2" },
-];
+const users = require("../database/user.json");
 
 router.post("/login", (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password  } = req.body;
+    console.log(username);
     if (!username) {
     return  res.status(200).send("username missing");
     }
@@ -17,12 +14,12 @@ router.post("/login", (req, res) => {
       return res.status(200).send("password missing");
     }
 
-    const user = users.find((u) => u.username === username);
+    const user = users.find((u) => u.userName === username);
 
     
     if (user) {   
         if(user.password === password){
-          return res.status(200).send('Login succesfull')
+          return res.status(200).send(user.address);
 
         }
       else{
