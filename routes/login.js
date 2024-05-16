@@ -4,9 +4,9 @@ var router = express.Router();
 const users = require("../database/user.json");
 
 router.post("/login", (req, res) => {
-  try {
+  try { console.log("body----",req.body);
     const { username, password  } = req.body;
-    console.log(username);
+    
     if (!username) {
     return  res.status(200).send("username missing");
     }
