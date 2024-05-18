@@ -38,8 +38,9 @@ router.put("/add/:id",(req,res) => {
     return res.status(200).send(idmatch);
 });
  router.delete('/delete/:id',(req,res) => {
-    const idmatch = users.findIndex((u) => u.userId === parseInt(req.params.id));
-    users.splice(idmatch,1);
+    const index = users.findIndex((u) => u.userId === parseInt(req.params.id));
+    if(index>0){
+    users.splice(index,1);}
     return res.status(200).send(users);
 
  });
