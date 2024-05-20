@@ -29,27 +29,25 @@
   },
   {
     "userId": 3,
-    "userName": "Vinay",
-    "password": "678",
+    "password": "123",
     "address": {
-      "addressLineOne": "Odathumparambil",
-      "addressLineTwo": "MRA 54",
-      "postalCode": "691213",
-      "city": "kochi",
+      "addressLineOne": "Sreenivas",
+      "addressLineTwo": "A.N.Puram",
+      "postalCode": "688011",
+      "city": "Alappuzha",
       "state": "Kerala",
       "country": "IN"
     },
-    "usertype": "Admin"
+    "usertype": "Customer"
   },
   {
     "userId": 4,
-    "userName": "serah",
-    "password": "980",
+    "password": "123",
     "address": {
-      "addressLineOne": "kakkanadu House",
-      "addressLineTwo": "NN 103A",
-      "postalCode": "691012",
-      "city": "kollam",
+      "addressLineOne": "Sreenivas",
+      "addressLineTwo": "A.N.Puram",
+      "postalCode": "688011",
+      "city": "Alappuzha",
       "state": "Kerala",
       "country": "IN"
     },
