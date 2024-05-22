@@ -14,20 +14,6 @@
     }
   },
   {
-    "userName": "Serina",
-    "userId": 2,
-    "password": "serina@123",
-    "usertype": "seller",
-    "address": {
-      "addressLineOne": "Xyz",
-      "addressLineTwo": "Qwe",
-      "postalCode": "123123",
-      "city": "YUI",
-      "state": "POIOP",
-      "country": "NL"
-    }
-  },
-  {
     "userId": 3,
     "userName": "Vinay",
     "password": "678",
@@ -44,6 +30,48 @@
   {
     "userId": 4,
     "userName": "serah",
+    "password": "980",
+    "address": {
+      "addressLineOne": "kakkanadu House",
+      "addressLineTwo": "NN 103A",
+      "postalCode": "691012",
+      "city": "kollam",
+      "state": "Kerala",
+      "country": "IN"
+    },
+    "usertype": "Customer"
+  },
+  {
+    "userId": 5,
+    "userName": "sera@",
+    "password": "980",
+    "address": {
+      "addressLineOne": "kakkanadu House",
+      "addressLineTwo": "NN 103A",
+      "postalCode": "691012",
+      "city": "kollam",
+      "state": "Kerala",
+      "country": "IN"
+    },
+    "usertype": "Customer"
+  },
+  {
+    "userId": 6,
+    "userName": "sera@",
+    "password": "980",
+    "address": {
+      "addressLineOne": "kakkanadu House",
+      "addressLineTwo": "NN 103A",
+      "postalCode": "691012",
+      "city": "kollam",
+      "state": "Kerala",
+      "country": "IN"
+    },
+    "usertype": "Customer"
+  },
+  {
+    "userId": 7,
+    "userName": "sera@",
     "password": "980",
     "address": {
       "addressLineOne": "kakkanadu House",
