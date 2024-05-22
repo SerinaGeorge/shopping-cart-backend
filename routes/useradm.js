@@ -43,30 +43,22 @@ router.post("/user", (req, res) => {
     let user_verified = validateusername(username);
     if (user_verified == true) {
       let userpassword_verified = validatepassword(password);
-      if (userpassword_verified == true){
-        let usertype_verified= validateusertype(usertype);
-        if(usertype_verified == true){
+      if (userpassword_verified == true) {
+        let usertype_verified = validateusertype(usertype);
+        if (usertype_verified == true) {
           users.push(newuser);
           writedata(users);
-      
+
           return res.status(200).send(newuser);
-          
+        } else {
+          return res.status(404).send("usertype not valid");
         }
-        else
-      {
-        return res.status(404).send('usertype not valid');
-      }
-      }
-      else
-      {return res.status(404).send('password not valid');
-  
+      } else {
+        return res.status(404).send("password not valid");
       }
     } else {
       return res.status(404).send("user name not valid");
     }
-  
-
-
   } catch (error) {
     return res.send(error);
   }
@@ -105,6 +97,7 @@ router.delete("/user/:id", (req, res) => {
 });
 
 function writedata(users) {
+  
   const jsonstring = JSON.stringify(users, null, 2);
   fs.writeFile(datafile, jsonstring, (err) => {
     if (err) {
@@ -125,16 +118,16 @@ function validatepassword(password) {
   return pattern.test(password);
 }
 
-function validateusertype(usertype){
-  const userType ={
-    customer:"customer",
-    seller:"seller",
-    admin:"admin"
+function validateusertype(usertype) {
+  const userType = {
+    customer: "customer",
+    seller: "seller",
+    admin: "admin",
+  };
+  if (Object.values(userType).includes(usertype)) {
+    return true;
+  } else {
+    return false;
   }
-if(Object.values(userType).includes(usertype)){
-  return true;
 }
-else{
-  return false;
-}}
 module.exports = router;
