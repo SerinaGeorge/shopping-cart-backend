@@ -2,6 +2,7 @@ const express = require("express");
 
 var router = express.Router();
 const users = require("../database/user.json");
+var UserModel = require("../models/user.js");
 
 const fs = require("fs");
 const path = require("path");
@@ -30,35 +31,61 @@ router.get("/user/:id", (req, res) => {
 
 router.post("/user", (req, res) => {
   try {
+    console.log("In Add User");
     const { username, password, address, usertype } = req.body;
 
-    const newuser = {
-      userId: users.length + 1,
+    const newuser = new UserModel({
+      // userId: users.length + 1,
       userName: username,
       password: password,
-      address: address,
+      // address: address,
       usertype: usertype,
-    };
+    });
 
-    let user_verified = validateusername(username);
-    if (user_verified == true) {
-      let userpassword_verified = validatepassword(password);
-      if (userpassword_verified == true) {
-        let usertype_verified = validateusertype(usertype);
-        if (usertype_verified == true) {
-          users.push(newuser);
-          writedata(users);
-
-          return res.status(200).send(newuser);
-        } else {
-          return res.status(404).send("usertype not valid");
-        }
-      } else {
-        return res.status(404).send("password not valid");
-      }
+    const validationResult = newuser.validator();
+    console.log("Validation Result : ", JSON.stringify(validationResult));
+    if (validationResult.status) {
+      users.push(newuser);
+      writedata(users);
+      return res.status(200).send(newuser);
     } else {
-      return res.status(404).send("user name not valid");
+      return res.status(403).send(validationResult);
     }
+    // if(userValidator("user_name", username)) {
+    //   if(userValidator("password", password)) {
+    //     if(userValidator("user_type", usertype)) {
+    //       users.push(newuser);
+    //       writedata(users);
+
+    //       return res.status(200).send(newuser);
+    //     } else {
+    //       return res.status(403).send("Invalid User Type");
+    //     }
+    //   } else {
+    //     return res.status(403).send("Invalid Password");
+    //   }
+    // } else {
+    //   return res.status(403).send("Invalid User Name");
+    // }
+    // let user_verified = validateusername(username);
+    // if (user_verified == true) {
+    //   let userpassword_verified = validatepassword(password);
+    //   if (userpassword_verified == true) {
+    //     let usertype_verified = validateusertype(usertype);
+    //     if (usertype_verified == true) {
+    //       users.push(newuser);
+    //       writedata(users);
+
+    //       return res.status(200).send(newuser);
+    //     } else {
+    //       return res.status(404).send("usertype not valid");
+    //     }
+    //   } else {
+    //     return res.status(404).send("password not valid");
+    //   }
+    // } else {
+    //   return res.status(404).send("user name not valid");
+    // }
   } catch (error) {
     return res.send(error);
   }
@@ -97,7 +124,6 @@ router.delete("/user/:id", (req, res) => {
 });
 
 function writedata(users) {
-  
   const jsonstring = JSON.stringify(users, null, 2);
   fs.writeFile(datafile, jsonstring, (err) => {
     if (err) {
@@ -106,6 +132,20 @@ function writedata(users) {
       console.log("file has been saved ");
     }
   });
+}
+
+function userValidator(type, value) {
+  const userNamePattern = /^[A-Za-z0-9_]{3,25}$/;
+  const passwordPattern = /^[^\s]{8,25}$/;
+  const userType = ["admin", "customer", "seller"];
+
+  if (type === "user_name") {
+    return userNamePattern.test(value);
+  } else if (type === "password") {
+    return passwordPattern.test(value);
+  } else if (type === "user_type") {
+    return userType.includes(value);
+  }
 }
 
 function validateusername(string) {
