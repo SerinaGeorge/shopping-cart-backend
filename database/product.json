@@ -1,12 +1,44 @@
 [
-    {
-        "productId": 1,
-        "productName": "Pen",
-        "productWeight": "5",
-        "productWeightMetrics": "gm",
-        "productHeight": "7",
-        "productHeightMetrics": "cm",
-        "productColors": ["Black", "Blue", "Red"],
-        "productDescription": "This is a good pen"
-    }
+  {
+    "productId": 1,
+    "productName": "Pen",
+    "productWeight": "5",
+    "productWeightMetrics": "gm",
+    "productHeight": "7",
+    "productHeightMetrics": "cm",
+    "productColors": [
+      "Black",
+      "Blue",
+      "Red"
+    ],
+    "productDescription": "This is a good pen"
+  },
+  {
+    "productId": 2,
+    "productName": "Pot",
+    "productWeight": "500",
+    "productWeightMetrics": "gm",
+    "productHeight": "10",
+    "productHeightMetrics": "cm",
+    "productColors": [
+      "Black",
+      "Blue",
+      "Red"
+    ],
+    "productDescription": "This is a good pot"
+  },
+  {
+    "id": 3,
+    "productName": "table",
+    "productWeight": "3",
+    "productWeightMetrics": "kgm",
+    "productHeight": "50",
+    "productHeightMetrics": "cm",
+    "productColors": [
+      "Black",
+      "Blue",
+      "Red"
+    ],
+    "productDescription": "This is a good table"
+  }
 ]
