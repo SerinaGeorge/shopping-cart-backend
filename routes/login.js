@@ -4,6 +4,7 @@ var router = express.Router();
 const users = require("../database/user.json");
 const User = require("../database/userschem.js");
 const token = require("../services/token.js");
+const { access } = require("fs");
 
 router.post("/login", async(req, res) => {
   try { console.log("body----",req.body);
@@ -30,7 +31,10 @@ var finduser = await User.findOne({userName: username});
            const acesstoken = token.generatetoken(finduser);
            //console.log(token.generatetoken(finduser._id));
            
-          return res.status(200).send(acesstoken);
+          return res.status(200).send({
+            "message": "User Logged in Successfully",
+            "token": acesstoken
+            });
 
         }
       else{
