@@ -17,22 +17,28 @@ module.exports =  class UserModel {
         status: true
     }
     
-    if(!userNamePattern.test(this.userName)) {
+    if(this.userName!== undefined && !userNamePattern.test(this.userName)) {
         validation.message.push("Invalid User Name");
         validation.status = false;
     }
-    if(!passwordPattern.test(this.password)) {
+    if(this.password!== undefined && !passwordPattern.test(this.password)) {
         validation.message.push("Invalid Password");
         validation.status = false;
     }
-    if(!userTypePattern.includes(this.usertype)) {
+    if(this.usertype!== undefined && !userTypePattern.includes(this.usertype)) {
         validation.message.push("Invalid User Type");
         validation.status = false;
     }
 
     return validation;
   }
+
+
+
+  
 }
+
+
 
 class Address {
   constructor(object) {
@@ -47,7 +53,7 @@ class Address {
 
   validator() {
     const addresslineonepattern = /^\d{2}$/;
-    const addresslinetwopattern = /^[A-Z]\s{2,21}$/;
+    const addresslinetwopattern = /^[A-Z]{2,21}$/;
     const postalcodepattern = /^[1-9][0-9]{5}$/;
     const citypattern = /^[A-Z]{3,15}$/;
     const statepattern = /^[A-Z]{3,15}$/;
@@ -57,32 +63,28 @@ const validation = {
 status : true
 }
 console.log(this.addressLineOne);
-  if(!addresslineonepattern.test(this.addressLineOne)){
+  if(this.addressLineOne !== undefined && !addresslineonepattern.test(this.addressLineOne)){
 validation.message.push('addresslineone not valid');
 validation.status = false;}
-if(!addresslinetwopattern.test(this.addressLineTwo)){
+if(this.addressLineTwo !== undefined && !addresslinetwopattern.test(this.addressLineTwo)){
   validation.message.push('addresslinetwo not valid');
 validation.status = false;
 }
-if(!postalcodepattern.test(this.postalCode)){
+if(this.postalCode!== undefined && !postalcodepattern.test(this.postalCode)){
   validation.message.push('postalcode not valid');
 validation.status = false;
 }
-if(!citypattern.test(this.city)){
+if(this.city!== undefined && !citypattern.test(this.city)){
   validation.message.push('city not valid');
 validation.status = false;
 }
 
-if(!citypattern.test(this.city)){
-  validation.message.push('city not valid');
-validation.status = false;
-}
 
-if(!statepattern.test(this.state)){
+if(this.state!== undefined && !statepattern.test(this.state)){
   validation.message.push('state not valid');
 validation.status = false;
 }
-if(!countrypattern.test(this.country)){
+if(this.country!== undefined && !countrypattern.test(this.country)){
   validation.message.push('country not valid');
 validation.status = false;
 }

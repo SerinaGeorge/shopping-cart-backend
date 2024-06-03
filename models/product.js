@@ -16,7 +16,7 @@ module.exports= class productmodel{
        const productweightmetricspattern = /^(kg|g|)?$/;
        const productheightpattern = /^\d+(\.\d+)?$/;
        const productheightmetricspattern =/^(cm|m|in|ft)?$/;
-       const productcolorspattern = /^(' + colors.join('|') + ')$/;
+  
      const productdescriptionpattern = /^[A-Za-z\s.]+$/;
 const validation ={
     message:[],
@@ -25,35 +25,57 @@ const validation ={
 }
 console.log(this.productWeight);
 console.log(productweightpattern.test(this.productWeight));
-if(!productnamepattern.test(this.productName)){
+if(this.productName!== undefined && !productnamepattern.test(this.productName)){
     validation.message.push('invalid product name');
   validation.status = false;
 }
-if(!productweightpattern.test(this.productWeight)){
+if(this.productWeight!== undefined && !productweightpattern.test(this.productWeight)){
     validation.message.push('invalid product weight');
   validation.status = false;
 }
-if(!productweightmetricspattern.test(this.productWeightMetrics)){
+if(this.productWeightMetrics!== undefined && !productweightmetricspattern.test(this.productWeightMetrics)){
     validation.message.push('invalid product weight metrics');
   validation.status = false;
 }
-if(!productheightpattern.test(this.productHeight)){
+if(this.productHeight!== undefined && !productheightpattern.test(this.productHeight)){
     validation.message.push('invalid product height');
   validation.status = false;
 
 }
-if(!productheightmetricspattern.test(this.productHeightMetrics)){
+if(this.productHeightMetrics!== undefined && !productheightmetricspattern.test(this.productHeightMetrics)){
     validation.message.push('invalid product height metrics');
   validation.status = false;
 }
-if(!productcolorspattern.test(this.productcolors)){
-    validation.message.push('invalid product colors');
-  validation.status = false;
-}
 
-  if(!productdescriptionpattern.test(this.productDescription)){
+
+  if(this.productDescription!== undefined && !productdescriptionpattern.test(this.productDescription)){
     validation.message.push('invalid product description');
   validation.status = false;}
 
+
   return validation ;
-   }}
+
+   }
+  
+   colorvalidator(){
+    const productcolorspattern =["blue","red","green","yellow","black","white","orange","brown"];
+ const colorvalidated ={
+  message : [],
+  status : true
+ }
+
+var i;
+if(this.productColors !== undefined){
+for(i=0;i<this.productColors.length;i++){
+  if( !productcolorspattern.includes(this.productColors[i])){
+colorvalidated.status = false;
+colorvalidated.message.push("validation color failed");
+  }
+  
+}}
+
+return colorvalidated;
+   }
+  
+   
+  }

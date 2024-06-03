@@ -15,17 +15,17 @@
   },
   {
     "productId": 2,
-    "productName": "Pot",
-    "productWeight": "500",
-    "productWeightMetrics": "gm",
-    "productHeight": "10",
+    "productName": "Pen",
+    "productWeight": "5",
+    "productWeightMetrics": "kg",
+    "productHeight": "7",
     "productHeightMetrics": "cm",
     "productColors": [
       "Black",
       "Blue",
       "Red"
     ],
-    "productDescription": "This is a good pot"
+    "productDescription": "This is a good pen"
   },
   {
     "id": 3,
@@ -40,5 +40,18 @@
       "Red"
     ],
     "productDescription": "This is a good table"
+  },
+  {
+    "productName": "Pen",
+    "productWeight": "5",
+    "productWeightMetrics": "g",
+    "productHeight": "7",
+    "productHeightMetrics": "cm",
+    "productColors": [
+      "black",
+      "blue",
+      "red"
+    ],
+    "productDescription": "This is a good pen"
   }
 ]
