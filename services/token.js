@@ -21,8 +21,8 @@ function validateToken(token) {
     console.log("Decoded Value ", decoded);
     return decoded;
   } catch (error) {
-    console.log("Error in Validate Token ", error);
-    return error.message;
+    console.log("Error in Validate Token ", error.message);
+    return null;
   }
 }
 

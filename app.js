@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const token = require("./services/token.js");
 mongoose.connect('mongodb://127.0.0.1:27017/admin')
 .then(res=>{
   console.log("mongodb connected")
@@ -13,13 +14,27 @@ mongoose.connect('mongodb://127.0.0.1:27017/admin')
   
 })
 
+var app = express();
+// app.use(async (req, res, next) => {
+//   console.log('Time:', Date.now())
+//   const accessToken = req.headers["acess-token"];
+//   const tokenValue = await token.validateToken(accessToken);
+//   if (tokenValue.userData.usertype == "admin"){
+
+  
+//   next()
+//   }
+//   else{
+//     res.status(403).send("unauthorised");
+//   }
+//})
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var useradmRouter = require('./routes/useradm');
 var productRouter = require('./routes/product');
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -4,19 +4,18 @@ var router = express.Router();
 const users = require("../database/user.json");
 var UserModel = require("../models/user.js");
 const token = require("../services/token.js");
-
+const auth = require("../middleware/authorisation.js");
 const fs = require("fs");
 const path = require("path");
 const datafile = path.join(__dirname, "../database/user.json");
 const User = require("../database/userschem.js");
 
 //const { error } = require("console");
-router.get("/user", async (req, res) => {
+router.get("/user", auth, async (req, res) => {
   try {
-    console.log(JSON.stringify(req.headers["acess-token"]));
-    const accessToken = req.headers["acess-token"];
-    const tokenValue = await token.validateToken(accessToken);
-    console.log("Token Value", tokenValue);
+
+    const tokenValue = req.headers["accessToken"] ;
+    
     if (tokenValue.userData.usertype == "admin") {
       var fetchdata = await User.find({});
       return res.status(200).send(fetchdata);
@@ -31,12 +30,10 @@ router.get("/user", async (req, res) => {
   }
 });
 
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id",auth,async (req, res) => {
   try {
     const id = req.params.id;  
-    const accessToken = req.headers["acess-token"];
-    const tokenValue = await token.validateToken(accessToken);
-    console.log("Token Value", tokenValue);
+    const tokenValue = req.headers["accessToken"]
     if (tokenValue.userData.usertype == "admin"){
 
     const fetchdata = await User.findById(id);
@@ -99,7 +96,7 @@ router.post("/user", async (req, res) => {
   }
 });
 
-router.put("/user/:id", async (req, res) => {
+router.put("/user/:id",auth, async (req, res) => {
   try {
     const { username, password, address, usertype } = req.body;
     console.log(username);
@@ -127,8 +124,7 @@ router.put("/user/:id", async (req, res) => {
     return res.send(idmatch );
   
   */
- const accessToken = req.headers["acess-token"];
-  const tokenValue = await token.validateToken(accessToken);
+    const tokenValue = req.headers["accessToken"]
   console.log("Token Value", tokenValue);
   if (tokenValue.userData.usertype == "admin"){
 
@@ -162,11 +158,10 @@ router.put("/user/:id", async (req, res) => {
     return res.send(error.message);
   }
 });
-router.delete("/user/:id", async (req, res) => {
+router.delete("/user/:id",auth, async (req, res) => {
   try {
     const id = req.params.id;
-    const accessToken = req.headers["acess-token"];
-    const tokenValue = await token.validateToken(accessToken);
+    const tokenValue = req.headers["accessToken"]
     console.log("Token Value", tokenValue);
     if (tokenValue.userData.usertype == "admin"){
 
