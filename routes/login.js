@@ -1,5 +1,5 @@
 const express = require("express");
-const jwt =require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 var router = express.Router();
 const users = require("../database/user.json");
 const User = require("../database/userschem.js");
@@ -11,10 +11,10 @@ router.post("/login", async(req, res) => {
     const { username, password  } = req.body;
     
     if (!username) {
-    return  res.status(200).send("username missing");
+    return  res.status(403).send("username missing");
     }
     if (!password) {
-      return res.status(200).send("password missing");
+      return res.status(403).send("password missing");
     }
     
     // const user = users.find((u) => u.userName === username);
@@ -38,11 +38,11 @@ var finduser = await User.findOne({userName: username});
 
         }
       else{
-       return res.status(200).send('password incorrect');
+       return res.status(403).send('password incorrect');
       }  
 
     } else {
-       return res.status(200).send("user not found");
+       return res.status(403).send("user not found");
     }
 
     
