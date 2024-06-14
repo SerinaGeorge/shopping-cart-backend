@@ -62,7 +62,7 @@ router.get("/user/:id",auth,async (req, res) => {
 router.post("/user", async (req, res) => {
   try {
     const { username, password, address, usertype } = req.body;
-
+console.log("hello"+JSON.stringify(req.body));
     const newuser = new UserModel({
       // userId: users.length + 1,
       userName: username,

@@ -25,7 +25,7 @@ router.get("/products/:id",async (req, res) => {
 
 try{
   const recieved =  await Product.findById(id);
- return  res.send(recieved)}
+ return  res.send([recieved])}
  catch(error){
   console.error(error);
   res.status(500).send(error);
@@ -70,7 +70,7 @@ router.post("/products", async (req, res) => {
       
 
     
-    return res.send(newproduct);
+    return res.status(200).send(newproduct);
   } else {
     return res.send(
       JSON.stringify(validationresult.message) +
