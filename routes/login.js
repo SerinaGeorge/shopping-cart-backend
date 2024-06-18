@@ -33,7 +33,8 @@ var finduser = await User.findOne({userName: username});
            
           return res.status(200).send({
             "message": "User Logged in Successfully",
-            "token": acesstoken
+            "token": acesstoken,
+            "userinfo" : finduser.usertype
             });
 
         }
