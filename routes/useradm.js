@@ -38,7 +38,7 @@ router.get("/user/:id",auth,async (req, res) => {
 
     const fetchdata = await User.findById(id);
 
-    return res.status(200).send(fetchdata);
+    return res.status(200).send([fetchdata]);
   } 
   else{
    // return res.send("user not authorised");
