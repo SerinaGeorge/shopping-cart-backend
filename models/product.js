@@ -8,6 +8,7 @@ module.exports= class productmodel{
         this.productHeightMetrics =object.productHeightMetrics;
         this.productColors = object.productColors;
         this.productDescription = object.productDescription;
+        this.sellerId = object.sellerId
     }
 
     validator(){

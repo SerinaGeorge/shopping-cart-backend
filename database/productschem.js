@@ -8,7 +8,8 @@ const productSchema  =new mongoose.Schema({
     productHeight: String,
     productHeightMetrics: String,
     productColors: [String],
-    productDescription: String
+    productDescription: String,
+    sellerId:String
 })
 
 

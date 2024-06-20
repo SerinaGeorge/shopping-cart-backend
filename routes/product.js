@@ -53,6 +53,8 @@ try{
 
 
 router.post("/products", auth,async (req, res) => {
+  const tokenValue = req.headers["accessToken"]
+
   const {
     productname,
     productweight,
@@ -71,6 +73,8 @@ router.post("/products", auth,async (req, res) => {
     productHeightMetrics: productheightmetrics,
     productColors: productcolors,
     productDescription: productdescription,
+    sellerId: tokenValue.userData._id
+
   });
 
   const validationresult = newproduct.validator();
@@ -79,8 +83,8 @@ router.post("/products", auth,async (req, res) => {
   if (validationresult.status && colorvalidation.status) {
    // product.push(newproduct);
     try{
-      const tokenValue = req.headers["accessToken"]
-      if (tokenValue.userData.usertype == "admin"||tokenValue.userData.usertype == "seller"){
+      
+      if (tokenValue.userData.usertype == "seller"){
     
       await editdb.save();
       res.status(201).json(editdb);
