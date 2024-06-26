@@ -44,7 +44,7 @@ router.get("/user/:id",auth,async (req, res) => {
    // return res.send("user not authorised");
    if(tokenValue.userData._id == id){
     const getdata = await User.findById(id);
-    return res.status(200).send(getdata);
+    return res.status(200).send([getdata]);
     
    }
    else{

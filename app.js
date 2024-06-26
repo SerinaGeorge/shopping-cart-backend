@@ -33,7 +33,7 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var useradmRouter = require('./routes/useradm');
 var productRouter = require('./routes/product');
-
+var cartRouter = require('./routes/cart');
 
 
 // view engine setup
@@ -58,6 +58,7 @@ app.use('/users', usersRouter);
 app.use('/user', loginRouter);
 app.use('/useradm',useradmRouter);
 app.use('/Product',productRouter);
+app.use('/cart',cartRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
